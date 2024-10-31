@@ -1,0 +1,30 @@
+version: "3"
+networks:
+  expense:
+    driver: bridge
+volumes:
+  mysql: # docker volume create mysql
+#use pre-existing network
+# networks:
+#   network1:
+#     name: expense
+#     external: true
+services:
+  mysql:
+    image: srikanthhg/mysql:expense
+    container_name: mysql  # --name mysql
+    volumes:
+      - mysql:/var/lib/mysql  -v mysql:/var/lib/mysql
+  backend:
+    image: srikanthhg/backend:expense
+    container_name: backend
+    depends_on: 
+      - mysql
+  frontend:
+    image: srikanthhg/frontend:expense
+    container_name: frontend
+    depends_on:
+      - backend
+    ports:
+      - 80:80
+
