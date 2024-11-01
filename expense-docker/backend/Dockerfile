@@ -13,7 +13,7 @@ FROM node:20.18.0-alpine3.20
 WORKDIR /opt/server
 
 # Create a non-root user and group
-RUN addgroup -S expense && adduser -S expense -G expense && \
+RUN addgroup -S expense && adduser -S expense -G expense
     
 
 # Copy only necessary files from the builder stage
