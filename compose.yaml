@@ -1,14 +1,14 @@
 version: "3"
-networks:
-  expense:
-    driver: bridge
+# networks:
+#   expense:
+#     driver: bridge
 volumes:
   mysql: # docker volume create mysql
 #use pre-existing network
-# networks:
-#   network1:
-#     name: expense
-#     external: true
+networks:
+  network1:
+    name: expense
+    external: true
 services:
   mysql:
     image: srikanthhg/mysql:expense
