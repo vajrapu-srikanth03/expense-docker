@@ -1,3 +1,5 @@
+FROM nginx:mainline-alpine3.20-slim
+
 # Remove default config and create necessary directories
 RUN rm -rf /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf && \
     mkdir -p /var/cache/nginx/{client_temp,proxy_temp,fastcgi_temp,uwsgi_temp,scgi_temp} && \
