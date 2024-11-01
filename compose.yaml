@@ -1,14 +1,16 @@
 version: "3"
-# networks:
-#   expense:
-#     driver: bridge
+networks:
+  expense:
+    driver: bridge
 volumes:
   mysql: # docker volume create mysql
+
 #use pre-existing network
-networks:
-  network1:
-    name: expense
-    external: true
+# networks:
+#   network1:
+#     name: expense
+#     external: true
+
 services:
   mysql:
     image: srikanthhg/mysql:expense
@@ -16,12 +18,23 @@ services:
     container_name: mysql  # --name mysql
     volumes:
       - mysql:/var/lib/mysql  -v mysql:/var/lib/mysql
+    deploy:
+      resources:
+        limits:
+          cpus: '0.001'
+          memory: 50M
+
   backend:
     image: srikanthhg/backend:expense
     container_name: backend
     command: sh -c "sleep 10 && node /opt/server/index.js"
     depends_on: 
       - mysql
+    deploy:
+      resources:
+        limits:
+          cpus: '0.001'
+          memory: 50M
   frontend:
     image: srikanthhg/frontend:expense
     container_name: frontend
@@ -29,4 +42,9 @@ services:
       - backend
     ports:
       - 80:80
+    deploy:
+      resources:
+        limits:
+          cpus: '0.001'
+          memory: 50M
 
