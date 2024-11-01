@@ -12,6 +12,7 @@ volumes:
 services:
   mysql:
     image: srikanthhg/mysql:expense
+    env-file: ".env"
     container_name: mysql  # --name mysql
     volumes:
       - mysql:/var/lib/mysql  -v mysql:/var/lib/mysql
