@@ -9,7 +9,7 @@ RUN groupadd -r expense && \
     chown -R expense:expense /var/lib/mysql /var/run/mysqld /docker-entrypoint-initdb.d
 
 # Copy SQL scripts into the init directory
-ADD scripts/*.sql /docker-entrypoint-initdb.d
+COPY scripts/*.sql /docker-entrypoint-initdb.d
 
 # Switch to the non-root user
 USER expense
