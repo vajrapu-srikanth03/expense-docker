@@ -12,7 +12,7 @@ volumes:
 services:
   mysql:
     image: srikanthhg/mysql:expense
-    env-file: ".env"
+    env-file: "expense-docker/mysql/.env"
     container_name: mysql  # --name mysql
     volumes:
       - mysql:/var/lib/mysql  -v mysql:/var/lib/mysql
