@@ -1,8 +1,8 @@
 FROM node:20 AS builder
 WORKDIR /opt/server
 # Copy package.json and install dependencies first for better caching
-COPY package.json package-lock.json .
-RUN npm install --production
+COPY package.json .
+RUN npm install
 
 # Copy application files
 COPY *.js .
