@@ -23,7 +23,7 @@ COPY mysql-check.sh /opt/server
 
 # Set permissions for the /opt/server directory
 RUN chown -R expense:expense /opt/server
-RUN chmod +X mysql-check.sh
+RUN chmod +x mysql-check.sh
 
 # Expose the application port and set the user
 EXPOSE 8080
