@@ -6,7 +6,8 @@ RUN npm install
 
 # Copy application files
 COPY *.js .
-
+COPY mysql-check.sh /opt/server
+RUN chmod +x mysql-check.sh
 
 # Second stage: use Alpine for a smaller image
 FROM node:20.18.0-alpine3.20
@@ -18,12 +19,12 @@ RUN addgroup -S expense && adduser -S expense -G expense
 
 # Copy only necessary files from the builder stage
 COPY --from=builder /opt/server /opt/server
-COPY mysql-check.sh /opt/server
+
 
 
 # Set permissions for the /opt/server directory
 RUN chown -R expense:expense /opt/server
-RUN chmod +x mysql-check.sh
+
 
 # Expose the application port and set the user
 EXPOSE 8080
