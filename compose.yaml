@@ -24,12 +24,12 @@ services:
           cpus: '0.1'
           memory: 512M
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"] # -h  means host
 
   backend:
     image: srikanthhg/backend:expense
     container_name: backend
-    command: sh -c "sleep 10 && node /opt/server/index.js"
+    # command: sh -c "sleep 10 && node /opt/server/index.js"
     depends_on: 
       - mysql
     deploy:
