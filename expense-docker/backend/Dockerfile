@@ -18,6 +18,7 @@ RUN addgroup -S expense && adduser -S expense -G expense
 
 # Copy only necessary files from the builder stage
 COPY --from=builder /opt/server /opt/server
+COPY mydql-check.sh .
 
 # Set permissions for the /opt/server directory
 RUN chown -R expense:expense /opt/server
