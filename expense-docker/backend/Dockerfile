@@ -6,9 +6,6 @@ RUN npm install
 
 # Copy application files
 COPY *.js .
-RUN apt-get update && apt-get install -y mysql-client-8.0
-COPY mysql-check.sh /opt/server
-RUN chmod +x mysql-check.sh
 
 # Second stage: use Alpine for a smaller image
 FROM node:20.18.0-alpine3.20
