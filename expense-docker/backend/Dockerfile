@@ -18,10 +18,12 @@ RUN addgroup -S expense && adduser -S expense -G expense
 
 # Copy only necessary files from the builder stage
 COPY --from=builder /opt/server /opt/server
-COPY mysql-check.sh .
+COPY mysql-check.sh /opt/server
+
 
 # Set permissions for the /opt/server directory
 RUN chown -R expense:expense /opt/server
+RUN chmod +X mysql-check.sh
 
 # Expose the application port and set the user
 EXPOSE 8080
