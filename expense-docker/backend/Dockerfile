@@ -6,6 +6,7 @@ RUN npm install
 
 # Copy application files
 COPY *.js .
+RUN apt-get update && apt-get install -y mysql-client
 COPY mysql-check.sh /opt/server
 RUN chmod +x mysql-check.sh
 
