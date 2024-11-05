@@ -29,6 +29,7 @@ services:
   backend:
     image: srikanthhg/backend:expense
     container_name: backend
+    command: sh -c ""./mysql-check.sh -- node /opt/server/index.js"
     # command: sh -c "sleep 10 && node /opt/server/index.js"
     depends_on: 
       - mysql
