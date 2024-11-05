@@ -18,7 +18,7 @@
 echo "Waiting for MySQL to be ready..."
 
 # Simple MySQL connection check
-until mysqladmin ping -h mysql --silent; do
+until mysql ping -h mysql --silent; do
     echo "MySQL is unavailable - sleeping"
     sleep 2
 done
