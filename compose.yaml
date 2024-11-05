@@ -17,7 +17,7 @@ services:
     env_file: "expense-docker/mysql/.env"
     container_name: mysql  # --name mysql
     volumes:
-      - mysql:/var/lib/mysql  -v mysql:/var/lib/mysql
+      - mysql:/var/lib/mysql  # -v mysql:/var/lib/mysql
     deploy:
       resources:
         limits:
