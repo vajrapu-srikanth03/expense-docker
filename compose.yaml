@@ -18,6 +18,7 @@ services:
     container_name: mysql  # --name mysql
     volumes:
       - mysql:/var/lib/mysql  # -v mysql:/var/lib/mysql
+      - ./path_to_init_scripts:/docker-entrypoint-initdb.d
     deploy:
       resources:
         limits:
@@ -30,14 +31,17 @@ services:
     image: srikanthhg/backend:expense
     container_name: backend
     # command: sh -c "./mysql-check.sh -- node /opt/server/index.js"
-    command: sh -c "sleep 10 && node /opt/server/index.js"
+    command: sh -c "until mysqladmin ping -h mysql --silent; do echo waiting for mysql; sleep 2; done && node /opt/server/index.js"
+    # command: sh -c "sleep 10 && node /opt/server/index.js"
     depends_on: 
       - mysql
     deploy:
+      replicas: 3
       resources:
         limits:
           cpus: '0.1'
           memory: 512M
+
   frontend:
     image: srikanthhg/frontend:expense
     container_name: frontend
@@ -51,3 +55,10 @@ services:
           cpus: '0.1'
           memory: 512M
 
+
+
+
+
+# On a typical Linux system, the log file is located at:
+# /var/lib/docker/containers/[container-id]/[container-id]-json.log
+# For production environments, consider integrating a centralized logging system for better log management and analysis.
