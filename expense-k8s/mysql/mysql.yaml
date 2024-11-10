@@ -30,14 +30,14 @@ spec:
         #       name: mysql  # This is the name of the ConfigMap
         #       key: MYSQL_ROOT_PASSWORD   # This is the key in the ConfigMap
 
-        # envFrom:
-        #   - configMapRef:
-        #       name: mysql       #name of the configmap
+        envFrom:
+          - configMapRef:
+              name: mysql       #name of the configmap
 
-        volumeMounts:
-        - name: dbpass
-          mountPath: "/config"
-          readOnly: true
+        # volumeMounts:
+        # - name: dbpass
+        #   mountPath: "/config"
+        #   readOnly: true
 
   
   # volumeClaimTemplates:
