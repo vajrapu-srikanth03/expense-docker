@@ -36,7 +36,7 @@ services:
     image: srikanthhg/backend:expense
     container_name: backend
     # command: sh -c "./mysql-check.sh -- node /opt/server/index.js"
-    command: sh -c "until mysqladmin ping -h mysql --silent; do echo waiting for mysql; sleep 2; done && node /opt/server/index.js"
+    command: sh -c "until mysql ping -h mysql --silent; do echo waiting for mysql; sleep 2; done && node /opt/server/index.js"
     # command: sh -c "sleep 10 && node /opt/server/index.js"
     depends_on: 
       - mysql
@@ -69,3 +69,4 @@ services:
 # For production environments, consider integrating a centralized logging system for better log management and analysis.
 # docker-compose up --scale backend=3
 # donot mention container_name when u mention replicas
+# docker-compose down -v  # This will remove volumes and containers
