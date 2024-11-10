@@ -18,7 +18,7 @@ services:
     container_name: mysql  # --name mysql
     volumes:
       - mysql:/var/lib/mysql  # -v mysql:/var/lib/mysql
-      - ./path_to_init_scripts:/docker-entrypoint-initdb.d
+      # - ./path_to_init_scripts:/docker-entrypoint-initdb.d
     deploy:
       resources:
         limits:
@@ -26,6 +26,11 @@ services:
           memory: 512M
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"] # -h  means host
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
 
   backend:
     image: srikanthhg/backend:expense
