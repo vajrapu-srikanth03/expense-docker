@@ -23,16 +23,16 @@ spec:
       containers:
       - name: mysql
         image: srikanthhg/mysql:expense
-        # env:
-        # - name: MYSQL_ROOT_PASSWORD # This is the name of the environment variable
-        #   valueFrom:
-        #     secretKeyRef:
-        #       name: mysql  # This is the name of the secret
-        #       key: MYSQL_ROOT_PASSWORD   # This is the key in the secret
+        env:
+        - name: MYSQL_ROOT_PASSWORD # This is the name of the environment variable
+          valueFrom:
+            secretKeyRef:
+              name: mysql  # This is the name of the secret
+              key: MYSQL_ROOT_PASSWORD   # This is the key in the secret
 
-        envFrom:
-          - secretRef:
-              name: mysql       #name of the configmap
+        # envFrom:
+        #   - secretRef:
+        #       name: mysql       #name of the secret   ---working good
 
         # volumeMounts:
         # - name: dbpass
