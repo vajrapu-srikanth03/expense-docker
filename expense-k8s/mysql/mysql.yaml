@@ -40,12 +40,12 @@ spec:
           readOnly: true
 
   
-  volumeClaimTemplates:
-  - metadata
+  # volumeClaimTemplates:
+  # - metadata
 
-  volumes:
-  - name: dbpass
-    configMap:
-      name: mysql # Provide the name of the ConfigMap you want to mount.
+  # volumes:
+  # - name: dbpass
+  #   configMap:
+  #     name: mysql # Provide the name of the ConfigMap you want to mount.
 
       
