@@ -1,7 +1,0 @@
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: mysql
-  namespace: expense
-data:
-  MYSQL_ROOT_PASSWORD: "ExpenseApp@1"

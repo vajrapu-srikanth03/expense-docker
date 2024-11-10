@@ -26,12 +26,12 @@ spec:
         # env:
         # - name: MYSQL_ROOT_PASSWORD # This is the name of the environment variable
         #   valueFrom:
-        #     configMapKeyRef:
-        #       name: mysql  # This is the name of the ConfigMap
-        #       key: MYSQL_ROOT_PASSWORD   # This is the key in the ConfigMap
+        #     secretKeyRef:
+        #       name: mysql  # This is the name of the secret
+        #       key: MYSQL_ROOT_PASSWORD   # This is the key in the secret
 
         envFrom:
-          - configMapRef:
+          - secretRef:
               name: mysql       #name of the configmap
 
         # volumeMounts:
