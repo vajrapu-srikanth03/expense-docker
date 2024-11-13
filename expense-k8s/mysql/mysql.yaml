@@ -24,7 +24,7 @@ spec:
       - name: mysql
         image: srikanthhg/mysql:expense
         env:
-        - name: MYSQL_ROOT_PASSWORD # This is the name of the environment variable
+        - name: MYSQL_ROOT_PASSWORD # This is the name of the environment variable in linux machine
           valueFrom:
             secretKeyRef:
               name: mysql  # This is the name of the secret
@@ -35,8 +35,8 @@ spec:
         #       name: mysql       #name of the secret   ---working good
 
         # volumeMounts:
-        # - name: dbpass
-        #   mountPath: "/config"
+        # - name: mysql-secret-volume
+        #   mountPath: "/etc/mysql-secret"
         #   readOnly: true
 
   
@@ -44,8 +44,8 @@ spec:
   # - metadata
 
   # volumes:
-  # - name: dbpass
-  #   configMap:
-  #     name: mysql # Provide the name of the ConfigMap you want to mount.
+  # - name: mysql-secret-volume
+  #   secret:
+  #     secretName: mysql # Provide the name of the secret you want to mount.
 
       
