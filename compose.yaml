@@ -14,7 +14,7 @@ volumes:
 services:
   mysql:
     image: srikanthhg/mysql:expense
-    env_file: "expense-docker/mysql/.env"
+    env_file: "mysql/.env"
     container_name: mysql  # --name mysql
     volumes:
       - mysql:/var/lib/mysql  # -v mysql:/var/lib/mysql
@@ -68,3 +68,5 @@ services:
 # docker-compose up --scale backend=3
 # donot mention container_name when u mention replicas
 # docker-compose down -v  # This will remove volumes and containers
+# docker compose up -d 
+# docker compose down
