@@ -14,3 +14,7 @@ COPY code /usr/share/nginx/html
 
 # Switch to the nginx user
 USER nginx
+
+#   mkdir -p /var/cache/nginx/client_temp && \
+#   mkdir -p /var/cache/nginx/proxy_temp && \
+# In a single line we can write like this: mkdir -p /var/cache/nginx/{client_temp,proxy_temp} && \
